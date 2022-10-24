@@ -1,5 +1,6 @@
 package fr.dosa.gillus.employeemanager.service;
 
+import fr.dosa.gillus.employeemanager.exception.EmployeeNotFoundException;
 import fr.dosa.gillus.employeemanager.model.Employee;
 import fr.dosa.gillus.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class EmployeeService { // annote the service with @Service and autowired
 
     public Employee findEmployee(Long id){
         return employeeRepo
-                .findEmployeeById(id);
+                .findEmployeeById(id)
+                .orElseThrow(()-> new EmployeeNotFoundException("The employee with id : "+id+" was not found"));
     }
 }
