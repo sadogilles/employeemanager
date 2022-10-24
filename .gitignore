@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### other file to ignore ###
+.DS_Store
